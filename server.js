@@ -25,7 +25,7 @@ const PORT = 8080;
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-/** 
+/**
  * Cors for cross origin allowance
  */
 
@@ -34,7 +34,36 @@ app.use(express.json());
  */
 app.use(express.static('website'));
 
+/**
+ * Establish route handling
+ */
 
+
+/**
+ * A GET route that returns the projectData object
+ */
+app.get('/getprojectdata', (req, res) => {
+	res.status(200).json(projectData);
+});
+
+/**
+ * A POST route that adds incoming data to the projectData object
+ */
+app.post('/addentry', (req, res) => {
+	const incomingData = req.body;
+	/**
+	 * Validate the incoming data before storing it in projectData
+	 */
+	if (incomingData && incomingData.temperature && incomingData.date && incomingData.userRes) {
+		projectData[`${incomingData.date}`] = incomingData;
+		res.status(200).json(projectData);
+	} else {
+		/**
+		 * Respond with 422: Unprocessable Entity status code, because the body is syntactically correct but semantically wrong
+		 */
+		res.status(422).json({'error': 'Your request\'s body should include the temperature, date and user response fields!'});
+	}
+});
 /**
  * Setup Server
  */
