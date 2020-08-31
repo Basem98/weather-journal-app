@@ -1,0 +1,40 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2020": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            "tab"
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-trailing-spaces": "error",
+        "no-multi-str": "warn",
+        "no-redeclare": "error",
+        "object-curly-spacing": "warn",
+        "array-bracket-spacing": "warn",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-arrow-callback": "error",
+        "no-const-assign": "error"
+    }
+}
