@@ -110,6 +110,10 @@ input:focus, textarea:focus, .gen__btn:focus  {
     outline: none;
 }
 
+.title {
+    margin-bottom: 1.5rem;
+}
+
 .entryHolder__wrapper {
     background: rgba(0, 0, 0, 0.5);
     align-self: center;
