@@ -73,7 +73,7 @@ async function updateUi(url = '', entryHolder) {
 		const currentEntry = entryHolder.children.item(i);
 
 		/* Get the entry in the projectData object that matches the id of the current element */
-		currentEntry.textContent = `${currentEntry.id.slice(0, 1).toUpperCase()}${currentEntry.id.slice(1)}: ${projectData[currentEntry.id]}`;
+		currentEntry.innerHTML = `${currentEntry.id.slice(0, 1).toUpperCase()}${currentEntry.id.slice(1)}: ${projectData[currentEntry.id]}`;
 	}
 }
 
