@@ -80,7 +80,11 @@ async function updateUi(url = '', entryHolder) {
 /**
  * Chain all the promises to get the data, store it and update the ui with one click
  */
-function generateData(zipCode, content, entryHolder) {
+function generateData() {
+	const zipCode = document.getElementById('zip').value;
+	const enteredContent = document.getElementById('feelings').value;
+	const entryHolder = document.getElementById('entryHolder');
+
 	getWeatherData(zipCode)
 		.then((weatherData) => {
 			if (!weatherData)
@@ -91,7 +95,7 @@ function generateData(zipCode, content, entryHolder) {
 			const data = {};
 			data.date = newDate;
 			data.temp = weatherData?.main?.temp;
-			data.content = content;
+			data.content = enteredContent;
 			return postWeatherData('/addentry', data);
 		})
 		.then(() => {
@@ -110,10 +114,4 @@ function generateData(zipCode, content, entryHolder) {
 /**
  * Add an event listener to the generate button to call the generateData function
  */
-generateBtn.addEventListener('click', () => {
-	const zipCode = document.getElementById('zip').value;
-	const enteredContent = document.getElementById('feelings').value;
-	const entryHolder = document.getElementById('entryHolder');
-
-	generateData(zipCode, enteredContent, entryHolder);
-});
+generateBtn.addEventListener('click', generateData);
